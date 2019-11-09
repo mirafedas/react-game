@@ -4,10 +4,16 @@ import { questions } from '../../questions';
 import './Main.css';
 
 const Main = () => {
-  const checkAnswer = () => {
+  const checkAnswer = (e) => {
     // 1. check if the answer is correct;
-    // 2. display result;
-    // 3. change score in the state;
+    const answer = e.target.innerText.substr(3);
+    const correctAnswer = questions[0].correctAnswer;
+
+    if (answer === correctAnswer) {
+      console.log('yes')
+      // 2. display result;
+      // 3. change score in the state;
+    }
     // 4. render new question;
     // 5. when all questions have been used, show the final score.
   };
