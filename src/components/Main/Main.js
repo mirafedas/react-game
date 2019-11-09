@@ -43,9 +43,10 @@ class Main extends React.Component {
 
   checkAnswer = (e) => {
     const answer = e.target.innerText.substr(3);
-    const correctAnswer = questions[0].correctAnswer;
+    const correctAnswer = questions[this.state.questionNumber].correctAnswer;
     const messageCorrect = 'Correct!';
     const messageWrong = 'Wrong!';
+    console.log(answer, '---', correctAnswer);
 
     if (answer === correctAnswer) {
       this.props.changeScore();
