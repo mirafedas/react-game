@@ -1,14 +1,21 @@
 import React from 'react';
 import Particles from 'react-particles-js';
+import { createStore } from 'redux';
+import reducer from './reducers';
+import { Provider } from 'react-redux';
 
-import Main from './components/Main/Main.js';
+import Main from './components/Main/MainContainer.js';
 
 import './App.css';
+
+const store = createStore(reducer);
 
 const App = () => {
   return (
     <div>
-        <Main />
+        <Provider store={store}>
+            <Main />
+        </Provider>
         <Particles 
             params={{
             "particles": {

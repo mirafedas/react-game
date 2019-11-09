@@ -2,15 +2,22 @@ import React from 'react';
 import { questions } from '../../questions';
 
 import './Main.css';
+import changeScore from '../../actions';
 
-const Main = () => {
+const Main = (props) => {
+  console.log(props);
   const checkAnswer = (e) => {
     // 1. check if the answer is correct;
     const answer = e.target.innerText.substr(3);
     const correctAnswer = questions[0].correctAnswer;
 
+    
+
     if (answer === correctAnswer) {
-      console.log('yes')
+      console.log('yes');
+      changeScore();
+      console.log(props)
+
       // 2. display result;
       // 3. change score in the state;
     }
