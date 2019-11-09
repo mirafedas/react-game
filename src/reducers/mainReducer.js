@@ -1,4 +1,4 @@
-import CHANGE_SCORE from '../actions';
+import CHANGE_SCORE from '../constants/actionTypes';
 
 const initialState = {
   score: 0
@@ -9,7 +9,7 @@ export default function reducer(state = initialState, action) {
     case CHANGE_SCORE:
       return {
         ...state,
-        score: this.state.score + 1
+        score: state.score + 1
       };
     default:
       return state;
