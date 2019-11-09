@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Muli|PT+Sans|Roboto+Condensed&display=swap');
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 60vw;
+  color: white;
+  font-family: 'Muli', sans-serif;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.two-buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  align-content: space-between;
+}
+
+.answer-btn {
+  min-height: 25px;
+  width: 230px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid lightskyblue;
+  background-color: black;
+  color: white;
+  font-family: 'Muli', sans-serif;
+}
+
+.answer-btn:hover {
+  border-color: orange;
+}
+
+.answer-btn:active {
+  border: 1px solid red;
+}
+
+span {
+  font-weight: bold;
+  color: orange;
+  margin-right: 10px;
+}
+
+.result {
+  display: none;
+}
