@@ -22,7 +22,7 @@ class Main extends React.Component {
     this.setState({
       message: message
     })
-   setTimeout(this.hideResult, 2000);
+   setTimeout(this.hideResult, 1000);
   }
 
   renderNextQuestion = () => {
@@ -37,7 +37,7 @@ class Main extends React.Component {
 
   renderFinalResult = () => {
     this.setState({
-      message: `Great job! Your score is ${this.props.score}`
+      message: `Great job! Your score is ${this.props.score} out of ${questions.length}`
     })
   }
 
@@ -54,7 +54,7 @@ class Main extends React.Component {
     } else {
       this.displayResult(messageWrong);
     }
-    setTimeout(this.renderNextQuestion, 2000);
+    setTimeout(this.renderNextQuestion, 1000);
   };
 
 render() {
