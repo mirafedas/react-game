@@ -3,53 +3,95 @@ import { questions } from '../../questions';
 
 import './Main.css';
 
-const Main = (props) => {
-  const checkAnswer = (e) => {
-    // 1. check if the answer is correct;
+class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: '',
+      questionNumber: 0
+    }
+  }
+
+  hideResult = () => {
+    this.setState({
+      message: ''
+    })
+  }
+
+  displayResult = (message) => {
+    this.setState({
+      message: message
+    })
+   setTimeout(this.hideResult, 2000);
+  }
+
+  renderNextQuestion = () => {
+    this.setState({
+      questionNumber: this.state.questionNumber + 1
+    })
+
+    if (!questions[this.state.questionNumber]) {
+      this.renderFinalResult();
+    }
+  }
+
+  renderFinalResult = () => {
+    this.setState({
+      message: `Great job! Your score is ${this.props.score}`
+    })
+  }
+
+  checkAnswer = (e) => {
     const answer = e.target.innerText.substr(3);
     const correctAnswer = questions[0].correctAnswer;
+    const messageCorrect = 'Correct!';
+    const messageWrong = 'Wrong!';
 
     if (answer === correctAnswer) {
-      props.changeScore();
-      // 2. display result;
-      // 3. change score in the state;
+      this.props.changeScore();
+      this.displayResult(messageCorrect);
+    } else {
+      this.displayResult(messageWrong);
     }
-    // 4. render new question;
-    // 5. when all questions have been used, show the final score.
+    setTimeout(this.renderNextQuestion, 2000);
   };
+
+render() {
+  const questionNumber = this.state.questionNumber;
 
   return (
     <div className="main-container">
-      <div className="result">Result</div>
-      <p className="question">{questions[0].question}</p>
+      <div className="result">{this.state.message}</div>
+      <p className="question">{questions[questionNumber] ? questions[questionNumber].question : null}</p>
       <div className="button-container">
           <div className="two-buttons-wrapper">
               <button
                 className="answer-btn"
-                onClick={checkAnswer}
-                ><span>A:</span> {questions[0].answers[0]}
+                onClick={this.checkAnswer}
+                ><span>A:</span> {questions[questionNumber] ? questions[questionNumber].answers[0] : null}
               </button>
               <button
                 className="answer-btn"
-                onClick={checkAnswer}
-                ><span>C:</span> {questions[0].answers[2]}
+                onClick={this.checkAnswer}
+                ><span>C:</span> {questions[questionNumber] ? questions[questionNumber].answers[2] : null}
               </button>
           </div>
           <div className="two-buttons-wrapper">
               <button
                 className="answer-btn"
-                onClick={checkAnswer}
-                ><span>B:</span> {questions[0].answers[1]}
+                onClick={this.checkAnswer}
+                ><span>B:</span> {questions[questionNumber] ? questions[questionNumber].answers[1] : null}
               </button>
               <button
                 className="answer-btn"
-                onClick={checkAnswer}
-                ><span>D:</span> {questions[0].answers[3]}
+                onClick={this.checkAnswer}
+                ><span>D:</span> {questions[questionNumber] ? questions[questionNumber].answers[3] : null}
               </button>
           </div>
       </div>
     </div>
   );
+}
 }
 
 export default Main;
